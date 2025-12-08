@@ -1,24 +1,25 @@
-import { Injectable, signal, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Receipt } from '../models/receipt';
+import { environment } from '../../environments/environment';
+import { BaseService } from './base.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
-  private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:5000/api/receipts';
+export class ApiService extends BaseService {
+  private baseUrl = environment.baseUrl;
 
   receipts = signal<Receipt[]>([]);
 
   constructor() {
+    super();
     this.fetchReceipts();
   }
 
   fetchReceipts() {
-    this.http.get<Receipt[]>(this.baseUrl).subscribe(data => {
+    this.get<Receipt[]>(this.baseUrl).subscribe(data => {
       this.receipts.set(data);
     });
   }
@@ -27,7 +28,7 @@ export class ApiService {
     const formData = new FormData();
     formData.append('file', file);
 
-    return this.http.post<Receipt>(`${this.baseUrl}/upload`, formData).pipe(
+    return this.post<Receipt>(`${this.baseUrl}/upload`, formData).pipe(
       tap(newReceipt => {
         this.receipts.update(current => [...current, newReceipt]);
       })
