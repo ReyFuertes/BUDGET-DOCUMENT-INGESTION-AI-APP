@@ -2,22 +2,35 @@
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  margin-top: 2rem;
+  padding: 1rem;
+  margin-top: 1rem;
+
+  @media (min-width: 768px) {
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
 }
 
 .header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: stretch;
   margin-bottom: 1.5rem;
 
-  h2 { margin: 0; font-size: 1.5rem; color: #1a1a1a; }
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  h2 { margin: 0; font-size: 1.5rem; color: #1a1a1a; text-align: center; @media(min-width: 768px){ text-align: left; } }
 }
 
 .item-row {
   font-size: 0.9em;
   color: #64748b;
+  white-space: nowrap;
 }
 
 .font-bold {

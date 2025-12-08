@@ -27,13 +27,18 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
       display: block;
       min-height: 100vh;
       background: #f3f4f6;
-      font-family: 'Segoe UI', system-ui, sans-serif;
     }
 
     .main-container {
-      max-width: 900px;
+      width: 100%;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 2rem;
+      padding: 1rem;
+      box-sizing: border-box;
+
+      @media (min-width: 768px) {
+        padding: 2rem;
+      }
     }
 
     header {
@@ -42,18 +47,24 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
       
       h1 { 
         margin: 0; 
-        font-size: 2.5rem; 
+        font-size: 2rem; 
         background: linear-gradient(135deg, #2563eb, #db2777);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        line-height: 1.2;
+
+        @media (min-width: 768px) {
+            font-size: 2.5rem;
+        }
       }
       
-      p { color: #6b7280; font-size: 1.1rem; margin-bottom: 1.5rem; }
+      p { color: #6b7280; font-size: 1rem; margin-bottom: 1.5rem; }
 
       nav {
         display: flex;
         justify-content: center;
-        gap: 1rem;
+        gap: 0.5rem;
+        flex-wrap: wrap;
         
         a {
           text-decoration: none;
@@ -62,6 +73,7 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
           padding: 0.5rem 1rem;
           border-radius: 999px;
           transition: all 0.2s;
+          font-size: 0.9rem;
           
           &:hover {
             background: #e5e7eb;
@@ -71,6 +83,11 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
           &.active {
             background: #2563eb;
             color: white;
+          }
+
+          @media (min-width: 768px) {
+            font-size: 1rem;
+            gap: 1rem;
           }
         }
       }
