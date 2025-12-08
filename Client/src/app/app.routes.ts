@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { FileUploadComponent } from './Component/file-upload/file-upload.component';
-import { DashboardComponent } from './Component/dashboard/dashboard.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
